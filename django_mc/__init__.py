@@ -3,6 +3,9 @@ from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
 
+__version__ = '0.1.0.dev1'
+
+
 def get_layout_model():
     """
     Returns the Layout model that is active in this project.
