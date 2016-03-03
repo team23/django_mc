@@ -28,3 +28,18 @@ component provider (see ``django_mc.models.RegionComponentProvider``).
 django_mc is unopinionated about how you display and manage the data inside the
 user facing backend. This means you can use whatever administration interface
 you want. A good fit though might be ``django_backend``.
+
+Tests
+-----
+
+Create a virtual environment, then install ``django-mc`` in it with::
+
+    pip install -e .
+
+Install the dependencies required for the test suite with::
+
+    pip install -r tests/requirements.txt
+
+Then, run tests with::
+
+    py.test
