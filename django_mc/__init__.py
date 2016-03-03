@@ -8,6 +8,9 @@ from .mixins import *  # noqa
 __version__ = '0.1.0.dev1'
 
 
+default_app_config = 'django_mc.apps.DjangoMCAppConfig'
+
+
 def get_layout_model():
     """
     Returns the Layout model that is active in this project.
