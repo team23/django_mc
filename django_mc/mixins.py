@@ -1,6 +1,10 @@
 from django.template import Context, Template
 
 
+__all__ = ('TemplateHintProvider', 'CompositeTemplateHintProvider',
+           'TemplateNameProvider', 'Renderable',)
+
+
 class TemplateHintProvider(object):
     '''
     Use this mixin for objects which shall provide template hints.
