@@ -29,17 +29,15 @@ django_mc is unopinionated about how you display and manage the data inside the
 user facing backend. This means you can use whatever administration interface
 you want. A good fit though might be ``django_backend``.
 
-Tests
------
+Development
+-----------
 
-Create a virtual environment, then install ``django-mc`` in it with::
+Create a virtual environment, then install ``django-mc`` and its dependencies with::
 
-    pip install -e .
+Install the dependencies (including the test dependencies) with::
 
-Install the dependencies required for the test suite with::
+    pip install -r requirements.txt
 
-    pip install -r tests/requirements.txt
+Then you can run all tests with::
 
-Then, run tests with::
-
-    py.test
+    tox
