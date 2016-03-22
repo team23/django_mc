@@ -1,0 +1,6 @@
+*.pyc
+/*.egg-info/
+/.tox/
+/tests/db.sqlite
+/.cache/
+/.coverage
