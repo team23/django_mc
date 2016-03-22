@@ -1,0 +1,20 @@
+language: python
+python: 2.7
+sudo: false
+cache:
+- pip
+env:
+# - TOXENV=flake8
+- TOXENV=py27-18
+- TOXENV=py35-18
+- TOXENV=pypy-18
+install:
+- pip install tox
+script:
+- tox
+deploy:
+  provider: pypi
+  on:
+    tags: true
+    repo: team23/django_mc
+    condition: "$TOXENV = py27-18"
