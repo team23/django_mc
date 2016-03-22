@@ -1,4 +1,3 @@
-Django
 pytest==2.9.0
 pytest-django==2.9.1
 pytest-pythonpath==0.7
