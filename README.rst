@@ -1,6 +1,14 @@
 django-mc
 =========
 
+|pypi-badge| |build-status|
+
+.. |build-status| image:: https://travis-ci.org/team23/django_mc.svg
+    :target: https://travis-ci.org/team23/django_mc
+
+.. |pypi-badge| image:: https://img.shields.io/pypi/v/django-mc.svg
+    :target: https://pypi.python.org/pypi/django-mc
+
 **django-mc** let's you build a CMS system that evolves around a few key ideas:
 
 - Pages are Django models where every page represents the content of one URL.
