@@ -4,7 +4,6 @@ sudo: false
 cache:
 - pip
 env:
-# - TOXENV=flake8
 - TOXENV=py27-18
 - TOXENV=py35-18
 - TOXENV=pypy-18
@@ -14,6 +13,9 @@ script:
 - tox
 deploy:
   provider: pypi
+  user: ddanier
+  password:
+    secure: UHNuwohiAaYbyo/VtJBijt8IeobcyCjbFzywKc97hw9ZktrF645Kf4eUzvtkjyjpuTvXm7dyXVvQGpDngJ9v2Eo+eOFCbdyyfDP+jKwwpM6qonh1JzqISGeiIm8e9KVnLrnYpeceaVTuL5/pBwLvQ3XgdVA7QOs006Pcn1MmyX2zIl/ynmw03+gJ8jtWj72AFesxblVpV+D+ZbTNZ8RLXypuRh0O1G6XoIeUo3LYhHjMTnOipbAmvmZ18TbQWwSfIssrTWeDxNN+EVCURdW/1ECsi3moLIxdF7hO9m0PppyW0RDTRZDAovHo+1vCUCz8fRdbC0UxjttAQyYIaWsSUQjpQqbMlfi2/WNft5/bhkqL2k+lao09OQy0Tm6zIoP8oK1FiGeiZm01APUExSrVGmfY7rKl25YAEngws5pkrq6EW5cLgr3pMDj93YPkdFyDZhZ86RIPkp2HmpvYkysYwRgSF8/POYMoyEU4QY8j2foWGdq0OElnenjrFLYk0gTd/SEU8w/Qar+6zg2R3P/pPgWGVUQj3A2JZA7xIBVCMfUnsN+h6xNd/4hH+ZfgHW1jQ1fY3sd7ezs7eudXSxUKFE75hDlPqHWRv7OqnUOrQdb0h8aCvDyDqnH1h2bETcLZpG//uR+uAV7kdiJ9FooHw2RAtWwJsOcNhXWVtZVL/4Y=
   on:
     tags: true
     repo: team23/django_mc
