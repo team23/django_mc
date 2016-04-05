@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.1.0 (not yet released)
-------------------------
+0.1.0
+-----
 
 - Added ``django_mc.link`` sub-application.
 - Added ``AddComponentTypeToRegions`` and ``RemoveComponentTypeFromRegions``
