@@ -14,3 +14,4 @@ DEV
   to make it super easy to add and remove component types to and from the list of
   allowed components in a region.
 - Initial release.
+
