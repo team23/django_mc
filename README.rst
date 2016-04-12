@@ -40,9 +40,8 @@ you want. A good fit though might be ``django_backend``.
 Development
 -----------
 
-Create a virtual environment, then install ``django-mc`` and its dependencies with::
-
-Install the dependencies (including the test dependencies) with::
+Create a virtual environment, then install ``django-mc`` and its dependencies
+(including the test dependencies) with::
 
     pip install -r requirements.txt
 
