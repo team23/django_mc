@@ -39,8 +39,99 @@ you want. A good fit though might be `django_backend`_.
 
 .. _django_backend: https://github.com/team23/django_backend
 
+Concepts
+--------
+
+django_mc uses a few key concepts to describe how it works.
+
+Regions
+~~~~~~~
+
+In django_mc a region is a part of a template that gets filled up with dynamic
+content. This content is defined by components (see below for more on
+components).
+
+So a region is like a placeholder in your template that is managed by your CMS.
+In a "typical" website design, typical regions might be called "sidebar right",
+"footer", "content area", etc.
+
+A region is defined by the model ``django_mc.models.Region``.
+
+Since you use the region directly in the your templates, you need to know
+upfront which regions there are. So the best is not to change the regions
+during runtime, but create them using migrations.
+
+A region is also limited to specific components, so you define which component
+types can go into a specific region. That is information is also stored in the
+region model. So we recommend also using migrations to create this information.
+
+Since you usually have a lot of different component types in your project, we
+created the helpers
+``django_mc.migration_operations.AddComponentTypeToRegions`` and
+``django_mc.migration_operations.RemoveComponentTypeToRegions``. Use them like
+this in your migrations::
+
+    class Migration(migrations.Migration):
+        operations = [
+            AddComponentTypeToRegions(
+                'my_component_app',
+                'MyComponentModel',
+                regions=['footer', 'sidebar_right'],
+            )
+        ]
+
+Leave out the ``regions`` argument to add the component type to all regions.
+
+Pages (e.g. a RegionComponentProvider)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+django_mc doesn't come with a pre-built page model. That's up to you to create
+the page types you need. You are free to create as many different page models
+as you need and structure them as needed.
+
+In most cases your pages should inherit from
+``django_mc.models.RegionComponentProvider``. This is a model mixin that
+creates a many to many relation to components. The relation holds two more
+information: The region a component should go in and in what position it should
+be displayed.
+
+So while rendering a page, it can decide what components (i.e. dynamic content)
+shall go into a region.
+
+Layout
+~~~~~~
+
+Usually you will create a foreign key from your page models to the layout.
+
+A layout is also a ``RegionComponentProvider``, and experience shows that
+having a layout to define a set of components that can be reused between pages
+is a useful tool.
+
+For example you could create a component based menu structure that you put in
+the "footer" region in the layout. Now this content is shown in the footer
+region on every page by default. Still you have the possibility to easily
+override or enhance the footer content in the page itself.
+
+django_mc comes with a default implementation for a layout model:
+``django_mc.Layout``. But it's a swappable model, so feel free to change it
+with your own implementation.
+
+Components
+~~~~~~~~~~
+
+Components are the basic building blocks for managed content in django_mc.
+django_mc only comes with the base class ``django_mc.models.ComponentBase``.
+The components you define should subclass from that. This is using Django's
+model inheritance and is required in order to make the many to many relation
+provided by the ``RegionComponentProvider`` possible.
+
+You are encouraged to create as many component types as you need.
+
+Don't forget to add the component class to all regions as valid component type
+in a migration.
+
 Template Hints
---------------
+~~~~~~~~~~~~~~
 
 django-mc doesn't enforce any view structure to display your pages. So it's
 also very flexible in the template layer as it doesn't enforce any predefined
