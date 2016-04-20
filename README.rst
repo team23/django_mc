@@ -63,8 +63,8 @@ powerful, but predictable way to switch out the used template without much
 hassle.
 
 In order to use this mechanism, it's easiest to make your page views subclass
-from :class:``~django_mc.views.LayoutMixin``. Have a look at it's source code
-to see how it works internally. It's well commented.
+from ``django_mc.views.LayoutMixin``. Have a look at it's source code to see
+how it works internally. It's well commented.
 
 Development
 -----------
