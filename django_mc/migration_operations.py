@@ -56,6 +56,23 @@ class _ManageComponentTypeInRegions(migrations.RunPython):
 
 
 class AddComponentTypeToRegions(_ManageComponentTypeInRegions):
+    """
+    Use like this::
+
+        class Migration(migrations.Migration):
+            operations = [
+                AddComponentTypeToRegions(
+                    'my_component_app',
+                    'MyComponentModel',
+                    regions=['footer', 'sidebar_right'],
+                ),
+                # Leave out the ``regions`` argument to add to all regions.
+                AddComponentTypeToRegions(
+                    'my_other_component_app',
+                    'SecondComponentModel',
+                )
+            ]
+    """
     def run_forwards(self, apps, schema_editor):
         self.add_to_regions(apps)
 
@@ -64,6 +81,24 @@ class AddComponentTypeToRegions(_ManageComponentTypeInRegions):
 
 
 class RemoveComponentTypeFromRegions(_ManageComponentTypeInRegions):
+    """
+    Use like this::
+
+        class Migration(migrations.Migration):
+            operations = [
+                RemoveComponentTypeToRegions(
+                    'my_component_app',
+                    'MyComponentModel',
+                    regions=['footer', 'sidebar_right'],
+                ),
+                # Leave out the ``regions`` argument to remove from all
+                # regions.
+                RemoveComponentTypeToRegions(
+                    'my_other_component_app',
+                    'SecondComponentModel',
+                )
+            ]
+    """
     def run_forwards(self, apps, schema_editor):
         self.remove_from_regions(apps)
 
