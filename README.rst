@@ -39,6 +39,33 @@ you want. A good fit though might be `django_backend`_.
 
 .. _django_backend: https://github.com/team23/django_backend
 
+Template Hints
+--------------
+
+django-mc doesn't enforce any view structure to display your pages. So it's
+also very flexible in the template layer as it doesn't enforce any predefined
+templates that you have to use, and doesn't enforce a template name for pages.
+
+However it tries to give you hints. For example a layout will give you it's
+slug as a hint that you could in corporate into the template name. Here is an
+example:
+
+You have defined your page model (that has a layout associated) and have built
+a corresponding view. Now the view uses the template name
+``myapp/page.html`` to render the page. If you now decide to take the template
+hint of the layout into account, you will use a list of template names to
+decide which one to render. The resulting list might look like
+``['myapp/page-mylayout.html', 'myapp/page.html']``. The first existing
+template will then be chosen.
+
+So the hint will suggest a variation of the template name. That gives a
+powerful, but predictable way to switch out the used template without much
+hassle.
+
+In order to use this mechanism, it's easiest to make your page views subclass
+from :class:``~django_mc.views.LayoutMixin``. Have a look at it's source code
+to see how it works internally. It's well commented.
+
 Development
 -----------
 
