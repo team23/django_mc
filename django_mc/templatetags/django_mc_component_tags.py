@@ -63,7 +63,11 @@ class RenderComponentNode(template.Node):
             composite_hint_providers.suggest_context_data(component))
         component_context[self.parent_hint_providers_variable_name] = composite_hint_providers
 
-        component_context.update(component.get_context_data())
+        component_context.update(component.get_context_data(
+            render_node=self,
+            template_context=context,
+            component_context=component_context,
+        ))
         context.update(component_context)
         try:
             return render_to_string(template_names, context)

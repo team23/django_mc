@@ -191,7 +191,7 @@ class Renderable(TemplateNameProvider):
             return self.context_object_name
         return self.get_model_name()
 
-    def get_context_data(self):
+    def get_context_data(self, **kwargs):
         '''
         Give the context that shall be used to render the object's template.
         '''
